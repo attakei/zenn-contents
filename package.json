@@ -1,0 +1,11 @@
+{
+  "name": "zenn-contents",
+  "version": "2021.2",
+  "main": "index.js",
+  "author": "Kazuya Takei",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "zenn-cli": "^0.1.72"
+  }
+}
