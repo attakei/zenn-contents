@@ -8,3 +8,9 @@ topics:
 published: false
 price: 0
 chapters:
+  - introduction
+  - about-sphinx-revealjs
+  - getting-started
+  - use-sphinx-extensions
+  - deployment-github-pages
+  - conclusion
