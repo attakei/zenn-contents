@@ -27,7 +27,7 @@ $ pip install "Sphinx==3.4.3" "sphinx-revealjs==1.0.1"
 Successfully installed Jinja2-2.11.3 MarkupSafe-1.1.1 Pygments-2.7.4 Sphinx-3.4.3 alabaster-0.7.12 babel-2.9.0 certifi-2020.12.5 chardet-4.0.0 docutils-0.16 idna-2.10 imagesize-1.2.0 packaging-20.9 pyparsing-2.4.7 pytz-2021.1 requests-2.25.1 snowballstemmer-2.1.0 sphinx-revealjs-1.0.1 sphinxcontrib-applehelp-1.0.2 sphinxcontrib-devhelp-1.0.2 sphinxcontrib-htmlhelp-1.0.3 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-1.0.3 sphinxcontrib-serializinghtml-1.1.4 urllib3-1.26.3
 ```
 
-Sphinxには最初にドキュメントに必要になる各種ファイルを作成してくれる`sphinx-quickstart`が用意されています。
+Sphinxには、ドキュメントとして必要な各種ファイルを新規作成してくれる`sphinx-quickstart`が用意されています。
 これを使って、ドキュメンテーションとして最低限の設定を用意してもらいましょう。
 
 基本的には `>` で始まる行でだけ入力を求められるので、必要に応じて自分用の値を入力していってください。
@@ -101,7 +101,7 @@ Python仮想環境を用意する
 # sphinx-revealjsを組み込み、ビルドする
 
 `sphinx-quickstart`で生成された直後は、当然ながら他の拡張を認識していない状態です。
-そのため、先程書いたソースをドキュメントHTMLとして出力することは可能ですが、プレゼンテーションに出来ません。
+そのため、先程書いたソースをドキュメントHTMLとして出力可能ですが、プレゼンテーションには出来ません。
 ここからは、このドキュメントで`sphinx-revealjs`を使うための設定をしていきます。
 
 ## 設定をする
@@ -120,7 +120,7 @@ extensions = [
 ]
 ```
 
-最低限ではここの編集を行うだけで、プレゼンテーション用ビルドが可能になります。
+最低限ではここを編集するだけで、プレゼンテーション用のビルドが実施できるようになります。
 
 ## ビルドをする
 
@@ -186,7 +186,7 @@ revealjs_style_theme = 'sky'
 
 ## CSSファイルを用意
 
-まずは、テキストの大文字小文字変換を無効化するスタイルを用意して、CSSファイルにしましょう。
+まずは、テキストの大文字・小文字を変換する設定を無効化するスタイルを用意して、CSSファイルにしましょう。
 Sphinxでドキュメントをまたいで使う静的ファイルは`_static`フォルダで管理することが多いです。
 
 ```css:source/_static/slides.css

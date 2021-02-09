@@ -111,7 +111,7 @@ reStructuredTextのインラインマークアップを用いて、Slackっぽ�
 
 ## YouTubeの動画を差し込む
 
-発表のイントロやデモとして動画（例えばYouTube）を埋め込みたいことがあるかもしれません。
+発表のイントロやデモとして動画（例えばYouTube）を埋め込みたいこともあるでしょう。
 `sphinxcontrib.yt` というSphinx拡張を使うことで簡単に埋め込むことができます。
 
 ```rest:source/index.rst
