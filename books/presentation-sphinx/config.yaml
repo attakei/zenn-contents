@@ -1,11 +1,11 @@
 title: "Sphinxでもプレゼンテーション"
 summary: |-
-  Python製ドキュメンテーションビルダーSphinxを用いて、HTMLプレゼンテーションを作成してみませんか？
-
+  Python製ドキュメンテーションビルダーSphinxを用いて、プレゼンテーションをしてみませんか？
+  この本は、Sphinxの拡張を使ってreStructuredTextからReveal.jsのプレゼンテーションを生成するハンドブックです。
 topics:
   - sphinx
   - revealjs
-published: false
+published: true
 price: 0
 chapters:
   - introduction
