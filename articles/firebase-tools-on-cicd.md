@@ -5,7 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
   - Firebase
   - GitLab
-published: false
+published: true
 ---
 
 Firebaseに何かをデプロイするケースがある際、素直に使ってるだけなら普通に`npm`ベースで`firebase-tools`を使うのが一番楽と考える人は多いでしょう。
