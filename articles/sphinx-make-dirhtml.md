@@ -156,7 +156,7 @@ Firebase Hostingでは、リダイレクト周りの挙動を`firebase.json`内�
   "hosting": {
     "redirects": [
       {
-        "regex": "^(.+?)(index)?(.*)\\.html$",
+        "regex": "^(.*?)(\\/index)?\\.html$",
         "destination": ":1:3/",
         "type": 302
       }
