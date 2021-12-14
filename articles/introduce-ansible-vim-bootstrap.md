@@ -13,22 +13,20 @@ published: true
 :::
 
 
-自分はローカルの開発軽作業の基盤としてLinuxを割と多用しています。
-その際の初期セットアップ向けのIaCとしてAnsibleを採用しており、
-その他 `dotfiles` などを始めとした「どの環境でもだいたい使う」ものも込でひとまとめにして [GitHub上で管理](https://github.com/attakei/workstation)しています。 [^1]
+自分はローカルの開発軽作業の基盤としてLinuxを割と多用しており、初期セットアップ向けのIaCとしてAnsibleを採用しています。
+単純なPlaybookだけでなく、 `dotfiles` などを始めとした「どの環境でも大体使う」ものも含めて、まとめて [GitHub上で管理](https://github.com/attakei/workstation)しています。 [^1]
 
 さて、そんな基盤の上のエディターとして確実に入れているのがVisual Studio Code・Vim・NeoVim [^2] で、規模感とか環境に合わせて行ったり来たりしています。
 現時点でのVimを使う際のスタンスとしては、「思いっきりカスタマイズする」というよりも、「それなりに便利そうなプラグインだけセットアップ」するスタイルです。
-そのため、細かく考えずに使うために[Vim Bootstrap](https://vim-bootstrap.com/)を利用しています。
+そのため、細かく考えずともそこそこ便利使い出来るように、[Vim Bootstrap](https://vim-bootstrap.com/)を利用しています。
 
-
-これらを踏まえてなのですが、3年ほど前にAnsible Galaxyに [vim_bootstrap](https://galaxy.ansible.com/attakei/vim_bootstrap)というロールを公開しています。
+これらを踏まえてなのですが、3年ほど前にAnsible Galaxyで [vim_bootstrap](https://galaxy.ansible.com/attakei/vim_bootstrap)というロールを公開しています。
 
 https://github.com/attakei/ansible-vim-bootstrap/
 
-このロールを今年になって手直ししてたので、現在の実装でどんなことをやっているかを簡単に整理しょうと思います。
+このロールを今年になって手直ししてたので、現在の実装でどんなことをやっているかを簡単に整理・解説します。
 
-[^1]: メンテナンス頻度はあまり高くないのは目をつぶる感じで。
+[^1]: メンテナンス頻度があまり高くないことには目をつぶる感じで。
 [^2]: NeoVimは、Vimに多少プラグインを入れて使っている関係上、「手っ取り早く起動するまっさらなVim」の代用としています。 [^3]
 [^3]: `vim --clean`あたりを使ってない理由は特にないです。
 
@@ -66,7 +64,7 @@ WebサイトとしてのVim Bootstrapは、以下のような流れでファイ�
 -
 ```
 
-ただし、Ansible上の変数からフォーム用のクエリボディーを生成するのはJinjaテンプレート上では手間なため、
+ただし、Ansible上の変数からフォーム用のクエリボディーを生成するのはJinjaテンプレート上だと手間なため、
 [ロール内部で自作のPlugin](https://github.com/attakei/ansible-vim-bootstrap/blob/master/lookup_plugins/vim_bootstrap_post.py)を用意しています。
 
 [^4]: DevToolなどで見ると確認できます。
@@ -105,11 +103,14 @@ Vim Bootstrapを使っている場合にも、ユーザーが独自に設定を�
 
 ## 余談
 
-色々必要そうな更新を済ませて、比較的安定運用はしています。
+色々必要そうな更新を済ませて、現在は比較的安定した状態にはなっています。
 とはいえ言語用の設定に関しては、最近になってVimのLSPプラグイン5人衆を導入しはじめた関係で、一切指定しなかったりします。 [^7]
 そのせいで、徐々にVim Bootstrapである必要性が薄くなってきている感じは否めません。
 
-いつかVim Bootstrapで不満が出るかもしれませんが、それは未来のお話ということで。
+いつかVim Bootstrapでは不満が出ることもあるでしょうが、それは未来のお話ということで。
+
+<!-- textlint-disable ja-technical-writing/sentence-length,ja-technical-writing/max-comma -->
 
 [^7]: `prabirshrestha/async.vim`, `prabirshrestha/vim-lsp`, `prabirshrestha/asyncomplete.vim`, `prabirshrestha/asyncomplete-lsp.vim`,  mattn/vim-lsp-settings`
  
+<!-- textlint-enable ja-technical-writing/sentence-length,ja-technical-writing/max-comma -->
