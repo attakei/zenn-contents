@@ -12,7 +12,7 @@ title: "GitHub Pagesで公開する"
 GitHub PagesはGitHubが内包する機能の1つです。
 GitHubリポジトリの特定のブランチを、そのまま`USERNAME.github.io`のドメイン配下で公開できるようになります。[^#]
 
-[^#]: `https://github.com/USERNAME/REPOSITORY`に対して、`https://USERNAME.github.io/REPOSITORY`というサイトになります
+[^#]: `https://github.com/USERNAME/REPOSITORY`に対して、`https://USERNAME.github.io/REPOSITORY`というサイトになります。
 
 簡単なデモやドキュメンテーションだけでなく、ブログなどを公開している人もいます。
 `sphinx-revealjs`では本体リポジトリのPagesでデモを公開しています。
