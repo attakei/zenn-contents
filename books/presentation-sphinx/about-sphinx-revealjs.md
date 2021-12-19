@@ -83,8 +83,6 @@ Sphinxの通常のHTML出力のみでは、以下のような内容のHTMLを生
 
 `sphinx-revealjs`による出力では、以下のような内容になります。
 
-Sphinxの通常のHTML出力のみでは、以下のような内容のHTMLを生成します。
-
 ```html
 <section>
   <h1>Title</h1>

@@ -116,7 +116,7 @@ Python仮想環境を用意する
 # ones.
 extensions = [
    # 使用する拡張としてsphinx-revealjsを新規追加
-   'sphinx_revealjs,
+   'sphinx_revealjs',
 ]
 ```
 
