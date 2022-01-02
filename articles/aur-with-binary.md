@@ -5,7 +5,7 @@ type: "tech"
 topics:
   - archlinux
   - firebase
-published: false
+published: true
 ---
 
 [#大晦日](https://twitter.com/hashtag/大晦日ハッカソン)[ハッカソン](https://omisoka-hackathon.connpass.com/event/233973/)に参加して、
