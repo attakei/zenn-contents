@@ -13,8 +13,10 @@ published: false
 
 https://twitter.com/attakei/status/1476791638299377666?s=20
 
-どんなものかの実態は、以前にZennで書いた「[CI/CDのためのFirebase スタンドアロンバイナリ](./firebase-tools-on-cicd)」を読んでもらったほうが早いのですが、
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+実態については、以前にZennで書いた「[CI/CDのためのFirebase スタンドアロンバイナリ](./firebase-tools-on-cicd)」を読んでもらったほうが早いのですが、
 要するに「公式に提供されているバイナリをArch Linuxのフローでインストールしやすくする」だけのものです。
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 yayなどを使っているなら `yay -S firebase-tools-bin` でインストールが出来るので、興味がある方は試してみてください。
 
@@ -60,8 +62,10 @@ package() {
 }
 ```
 
+<!-- textlint-disable ja-technical-writing/max-ten -->
 はっきり言って、なんの変哲もない「ダウンロードして、実行権限を付与して、所定のフォルダにインストールする」というだけのファイルです。
 もちろん、パッケージング用のコマンド`makepkg`でも何も問題なくパッケージの作成が完了します。
+<!-- textlint-enable ja-technical-writing/max-ten -->
 
 しかし、実際に作成されたパッケージを`pacman`を使ってインストール後に問題が起きました。
 Firebase CLIが起動しません。
@@ -149,7 +153,7 @@ Arch Wikiにある[パッケージの作成](https://wiki.archlinux.jp/index.php
 
 > 5. バイナリやライブラリから不要シンボルを除去する (symbol stripping)。
 
-うーん、状況的にこれが怪しそうな気がします。
+うーん、状況的にこれが怪しそうです。
 というわけで、この処理を無効化出来ないか探します。
 
 再度Arch Wikiより、今度は[PKGBUILDの説明](https://wiki.archlinux.jp/index.php/PKGBUILD)を読んでみます。
@@ -205,10 +209,12 @@ total 137400
 
 ファイルサイズも元通りに戻りました。
 
-検証時にインストールしたことになっているパッケージを削除した後に、AURに登録を実施。
+検証時にローカルインストールしていたパッケージを削除した後に、AURへの登録を実施。
 そのまま直接AURのものをインストールしたところ、`firebase`コマンドが正しく機能しました。
 
+<!-- textlint-disable ja-technical-writing/ja-no-successive-word -->
 めでたしめでたし。
+<!-- textlint-enable ja-technical-writing/ja-no-successive-word -->
 
 [^3]: 実際に実行をしてみても、ヘルプが表示されます。
 
