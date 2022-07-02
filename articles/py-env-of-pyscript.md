@@ -6,7 +6,7 @@ topics: ["python", "pyscript"]
 published: false
 ---
 
-※「パッケージ名編」とは書いたものの、「相対パス編」をやるかは未定
+※「パッケージ名編」とは書いたものの、「相対パス編」をやるかは未定です。
 
 ## 概要
 
@@ -23,7 +23,7 @@ PyScriptに使われる`py-env`タグの中身が、値に応じてどう解釈�
 
 ### 書かない
 
-PyScriptについての前説、アーキテクチャなどの大半
+PyScriptについての前説、アーキテクチャなどの大半について。
 
 ## py-env 要素について
 
@@ -62,8 +62,12 @@ PyScriptのドキュメント上は[ここ](https://github.com/pyscript/pyscript
 ![](/images/py-env-of-pyscript/pyoide-packages.png)
 
 この場合は、 `beautifulsoup4`と依存ライブラリである`soupsieve`をjsdelivrから入手しています。
-Pyodide側では、「汎用性の高いライブラリ」「科学計算系のライブラリ」「これらの動作に必要とするライブラリ」が `packages` 配下で管理されており、
-対象となるものに対してはこれらの挙動が適用されそうです。
+
+Pyodide側では、次のライブラリはリポジトリの`packages`配下で管理されており、条件を満たせばこの挙動が適用されそうです。
+
+- 汎用性の高い(とみなしている)ライブラリ
+- 科学計算系のライブラリ
+- これらの動作に必要とするライブラリ
 
 ```html
 <py-env>
@@ -87,7 +91,7 @@ Pyodide側では、「汎用性の高いライブラリ」「科学計算系の�
 
 ![](/images/py-env-of-pyscript/pypi-packages-pure.png)
 
-先程と違い、次の通信を行っています。
+先程と違い、次の通信をしています。
 
 1. PyPI に対して `https://pypi.org/pypi/dnspython/json` のリクエストを実行
 2. dnspythonのstableバージョンを認識した上で、`dnspython-2.2.1-py3-none-any.whl`をダウンロード
@@ -131,7 +135,7 @@ Pyodide側では、「汎用性の高いライブラリ」「科学計算系の�
 
 ![](/images/py-env-of-pyscript/pyoide-packages-old.png)
 
-jsdelivrにはdocutilsの0.18系しか無いらしく、PyPIに入手しに行っています。
+jsdelivrにはdocutilsの0.18系しか無いらしく、PyPIから探しに行きます。
 
 ### Pyoideに管理されているが、バージョン違いのライブラリ(none-pure-python編)
 
