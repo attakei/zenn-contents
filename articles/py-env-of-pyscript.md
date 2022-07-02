@@ -75,7 +75,7 @@ Pyodide側では、次のライブラリはリポジトリの`packages`配下で
 </py-env>
 ```
 
-このあたりは、コンパイルが必要なタイプも同じで、Pyoideが予めWASM向けのwheelを用意してくれています。
+このあたりは、コンパイルが必要なタイプも同じで、Pyodideが予めWASM向けのwheelを用意してくれています。
 
 ### Pyodide内で管理されていないライブラリ（pure-python編）
 
@@ -123,7 +123,7 @@ Pyodide側では、次のライブラリはリポジトリの`packages`配下で
 `Couldn't find a pure Python 3 wheel for 'tensorflow'.`と出ています。
 どうやら、PyPI上にあるパッケージといえども、Pure Pythonなもの（`～none-any.whl`）に限定されるようです。
 
-### Pyoideに管理されているが、バージョン違いのライブラリ(pure-python編)
+### Pyodideに管理されているが、バージョン違いのライブラリ(pure-python編)
 
 諸事情で`docutils`のちょっと古いバージョンが必要になったとします。
 
@@ -137,7 +137,7 @@ Pyodide側では、次のライブラリはリポジトリの`packages`配下で
 
 jsdelivrにはdocutilsの0.18系しか無いらしく、PyPIから探しに行きます。
 
-### Pyoideに管理されているが、バージョン違いのライブラリ(none-pure-python編)
+### Pyodideに管理されているが、バージョン違いのライブラリ(none-pure-python編)
 
 同様に、numpyのちょっと古いバージョンを使おうとしてみましょう。
 諸事情で`docutils`のちょっと古いバージョンが必要になったとします。
