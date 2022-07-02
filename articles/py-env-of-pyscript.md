@@ -3,7 +3,7 @@ title: "PyScriptのpy-envは記述に応じてどんな動きをするかを調�
 emoji: "🐍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["python", "pyscript"]
-published: false
+published: true
 ---
 
 ※「パッケージ名編」とは書いたものの、「相対パス編」をやるかは未定です。
