@@ -58,8 +58,10 @@ Enter 1-4 [2]:
 Written pyproject.toml; edit that file to add optional extra info.
 ```
 
-`init`時の注意事項として「`flit init`時に指定できるパッケージ名にハイフンが使えない」というものがあります。
-PyPI上でハイフンを使っている場合だとこれだと困るとは思いますが、後でなんとか出来るのでアンダースコアにしておきましょう。
+<!-- textlint-disable ja-technical-writing/ja-no-weak-phrase -->
+`init`時の注意事項として「`flit init`時に指定するパッケージ名ではハイフンが使えない」というものがあります。
+PyPI上でハイフンを使っている場合ではこれだと困るかもしれませんが、後でなんとか出来るのでアンダースコアにしておきましょう。
+<!-- textlint-enable ja-technical-writing/ja-no-weak-phrase -->
 
 ## パッケージ情報を移植する
 
