@@ -121,6 +121,16 @@ reStructuredTextのインラインマークアップを用いて、Slackっぽ�
 .. youtube:: Ps9JiaYqAFg
 ```
 
+```python:source/conf.py
+extensions = [
+    'sphinxemoji.sphinxemoji',
+    'sphinxcontrib.yt',
+    'sphinx_revealjs',
+]
+```
+
+:::details 以前の記述です。多くの場合は、ここまでの作業は必要ないでしょう。
+
 ブロック構造を追加する系のプラグインの場合、`sphinx-revealjs`のようなカスタム出力に対応していないことがほとんどです。
 こういった場合は、`source/conf.py`内にて`setup`関数を用意して挙動を上書きしてあげる必要があります。
 
@@ -135,6 +145,8 @@ def setup(app):
     from sphinxcontrib.yt.youtube import youtube, visit, depart
     app.add_node(youtube, override=True, revealjs=(visit, depart))
 ```
+
+:::
 
 ![youtube.png](https://storage.googleapis.com/zenn-user-upload/rwqo6tvwo5tjacejg6tnpyg8xmc2)
 # Sphinx番外編
