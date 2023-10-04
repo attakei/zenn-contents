@@ -4,7 +4,7 @@ emoji: "🖨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
   - Sphinx
-published: false
+published: true
 ---
 
 ## restructuredtextの「脚注」記法
