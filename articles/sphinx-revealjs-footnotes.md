@@ -9,7 +9,7 @@ published: false
 
 ## restructuredtextの「脚注」記法
 
-reStructuredTextには、記法の一つとして「脚注」があります。
+reStructuredTextには、記法の1つとして「脚注」があります。
 
 ```rst
 Lorem ipsum [#f1]_ dolor sit amet ... [#f2]_
@@ -20,9 +20,10 @@ Lorem ipsum [#f1]_ dolor sit amet ... [#f2]_
 .. [#f2] Text of the second footnote.
 ```
 
-上記のようなソース [^1] からSphinxなどでHTMLをビルドすると、
-`.. [#f1]`, `.. [#f2]` で始まる行は脚注となる箇所は `dl` 要素として扱われ、
-各項目には `footnote` クラス等が付与されるようになります。
+上記のようなソース [^1] からSphinxなどでHTMLをビルドすると、次のように扱われます。
+
+* `.. [#f1]`, `.. [#f2]` で始まる行は脚注となる箇所はグループとして `dl` 要素として扱う。
+* 各項目には `footnote` クラス等が付与される。
 
 [^1]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#footnotes より引用
 
