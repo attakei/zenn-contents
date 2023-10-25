@@ -91,7 +91,7 @@ aside.footnote p {
 ```python:conf.py
 revealjs_css_files = [
     # 既存のCSS
-    "footntes.css",
+    "footnotes.css",
 ]
 ```
 
