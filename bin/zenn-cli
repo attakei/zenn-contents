@@ -1,0 +1,9 @@
+#!/bin/sh
+
+exec deno run \
+  --allow-env \
+  --allow-net \
+  --allow-read \
+  --allow-sys \
+  --allow-write \
+  npm:zenn-cli $@

@@ -3,12 +3,10 @@ name: Run textlint for all contents
 on: push
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-    - run: yarn
-    - run: yarn textlint articles books 
+    - uses: actions/checkout@v4
+    - uses: denoland/setup-deno@v1
+    - name: Run textlint
+      run: bin/textlint articles books
