@@ -25,7 +25,7 @@ Lorem ipsum [#f1]_ dolor sit amet ... [#f2]_
 * `.. [#f1]`, `.. [#f2]` で始まる行は脚注となる箇所はグループとして `dl` 要素とする。
 * 各項目には `footnote` クラス等が付与される。
 
-[^1]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#footnotes より引用
+[^1]: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#footnotes より引用。
 
 ## sphinx-revealjsで脚注記法はどのように扱われるのか
 
