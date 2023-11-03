@@ -1,4 +1,5 @@
-# Zenn Contents
+# attakei's Zenn contents repository
 
-* [📘 How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)
-* [📘 Markdown guide](https://zenn.dev/zenn/articles/markdown-guide)
+## このリポジトリで管理されているZenn記事/本の誤字などを見つけたら
+
+Zennでのフィードバックでも構いませんが、是非フォークをしてPRを送ってください。
