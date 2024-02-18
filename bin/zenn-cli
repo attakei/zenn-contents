@@ -6,4 +6,5 @@ exec deno run \
   --allow-read \
   --allow-sys \
   --allow-write \
-  npm:zenn-cli $@
+  --unstable-fs \
+  npm:zenn-cli@0.1.153 $@
