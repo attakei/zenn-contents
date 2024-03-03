@@ -4,7 +4,7 @@ emoji: "🖨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx"]
 published: true
-published_at: 2024-03-03 19:00:00
+published_at: '2024-03-03 19:00'
 ---
 
 :::message
