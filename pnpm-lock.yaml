@@ -17,6 +17,9 @@ importers:
       textlint-rule-preset-ja-technical-writing:
         specifier: ^10.0.1
         version: 10.0.1(textlint@14.0.4)
+      zenn-cli:
+        specifier: ^0.1.153
+        version: 0.1.153
 
 packages:
 
@@ -1241,6 +1244,11 @@ packages:
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
+
+  zenn-cli@0.1.153:
+    resolution: {integrity: sha512-MLIdtRW2arQBuVCKlWrMF4eFZGkvmswrcc0OvgxmQs9w9/9rODfoyFK9nQQwrgyUwlxDzhUa/oAO6nks4GY5DA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
 
   zlibjs@0.3.1:
     resolution: {integrity: sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w==}
@@ -2931,6 +2939,8 @@ snapshots:
       mkdirp: 0.5.6
 
   xtend@4.0.2: {}
+
+  zenn-cli@0.1.153: {}
 
   zlibjs@0.3.1: {}
 
