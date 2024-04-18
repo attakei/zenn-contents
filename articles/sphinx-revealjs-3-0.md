@@ -40,9 +40,9 @@ class SomeDirective(Directive):
     }
 ```
 
-<!-- textlint-disable ja-technical-writing/sentence-length -->
+<!-- textlint-disable ja-technical-writing/sentence-length,ja-technical-writing/ja-no-redundant-expression -->
 今回は、下記のような実装を行い、`dict`ではなく継承した`RevealjsSectionAttributes`を設定することで、「あらゆる`options["data-****"]`を受け付ける」挙動を実現しています。
-<!-- textlint-enable ja-technical-writing/sentence-length -->
+<!-- textlint-enable ja-technical-writing/sentence-length,ja-technical-writing/ja-no-redundant-expression -->
 
 ```python
 class RevealjsSectionAttributes(dict):
