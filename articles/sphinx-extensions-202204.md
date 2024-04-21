@@ -55,7 +55,11 @@ https://github.com/attakei-lab/sphinxcontrib-external-link
 
 ※なんの条件付けもなく属性を付与するため、一長一短ではあります。
 
-### sphinxcontrib-oembed
+### sphinxcontrib-oembed(メンテナンス終了)
+
+:::message
+2024/04時点では[oEmbedPy](https://github.com/attakei/oEmbedPy)の開発をしているので、こっちはメンテナンスを終了しています。
+:::
 
 https://github.com/attakei-lab/sphinxcontrib-oembed
 
