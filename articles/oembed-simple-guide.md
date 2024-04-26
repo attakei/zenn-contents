@@ -1,6 +1,6 @@
 ---
 title: "Blueskyで初めて触れる人向けの、ふんわりoEmbed解説"
-emoji: "😽"
+emoji: "🌐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
   - bluesky
