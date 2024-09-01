@@ -1,6 +1,8 @@
 [tool.uv]
 dev-dependencies = [
-    "sphinx-revealjs~=3.0.3",
+    "pip",
+    "sphinx==8.0.2",
+    "sphinx-revealjs==3.0.3",
 ]
 [tool.uv.workspace]
 members = []
