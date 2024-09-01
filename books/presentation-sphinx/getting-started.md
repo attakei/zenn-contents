@@ -159,7 +159,7 @@ The HTML pages are in build/revealjs.
 
 `Reveal.js`では組み込みでのカラーテーマがいくつか提供されています。
 
-`sphinx-revaljs`では何も設定がない場合は、`black`が採用される動作になっています。
+`sphinx-revealjs`では何も設定がない場合は、`black`が採用される動作になっています。
 これは、設定を追記すればテーマが変わるようになっています。
 
 ## Reveal.jsの組み込みテーマ一覧
