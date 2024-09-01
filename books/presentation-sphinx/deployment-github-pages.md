@@ -1,5 +1,5 @@
 ---
-title: "GitHub Pagesで公開する"
+title: "GitHub Actionsを使いGitHub Pagesで公開する"
 ---
 
 ここまでのプレゼンテーション作成を済ませれば、ローカルのブラウザ経由で発表などが出来るようになりました。
@@ -10,23 +10,25 @@ title: "GitHub Pagesで公開する"
 ## 簡単な説明
 
 GitHub PagesはGitHubが内包する機能の1つです。
-GitHubリポジトリの特定のブランチを、そのまま`USERNAME.github.io`のドメイン配下で公開できるようになります。[^#]
+GitHubリポジトリの特定のブランチのファイルや、GitHub Actions経由でビルドしたコンテンツを、`USERNAME.github.io`のドメイン配下で公開できるようになります。[^#]
 
-[^#]: `https://github.com/USERNAME/REPOSITORY`に対して、`https://USERNAME.github.io/REPOSITORY`というサイトになります。
+[^#]: `https://github.com/USERNAME/REPOSITORY`であれば、`https://USERNAME.github.io/REPOSITORY`というサイトになります。
 
 簡単なデモやドキュメンテーションだけでなく、ブログなどを公開している人もいます。
 `sphinx-revealjs`では本体リポジトリのPagesでデモを公開しています。
 [こちらで公開している](https://attakei.github.io/sphinx-revealjs/)ので、その他の機能に興味があるなら是非見に来てください。
 
-## Pages用のブランチにHTMLをコミットする
+## GitHub Pagesへ公開するアプローチ
 
-前述の通り、Pagesのためブランチを指定した上でコミットとプッシュをすることでPagesの公開・更新が可能となります。
-まずは、その手法を考えてみましょう。
+GitHub Pages上にサイトを公開する方法は大雑把に2種類あります。
 
-一番シンプルな考え方となる方法は、「手元でHTMLをビルドしてまるごとコミットする」となります。
-しかし、Pages用ブランチはコンテンツがリポジトリのトップに来ねばならず、ワークスペースとして使いつつ同時にコンテンツをコミットしていくのはそれなりに大変です。
+* 「公開対象のブランチ」を設定して、ブランチにビルド後のコンテンツをコミット+プッシュする。
+* GitHub Actions上でワークフローを実行して、その過程でビルドされたコンテンツをデプロイする。
 
-そこで、今回はGitHub Actionsを用いて、このあたりの作業を自動化していきましょう。
+現状ではGitHub Actionsが「当たり前」と考えても支障はないと考えています。 [^#]
+そのため、ここから先では後者の「GitHub Actions上でワークフローを実行する」手法の説明をしていきます。
+
+[^#]: 実際の話として、「公開対象のブランチ」にプッシュするための処理もGitHub Actions上で実施可能です。こうなってくると、リポジトリの変な肥大化を気にするぐらいなら、最初から直接デプロイするほうが楽と言えます。
 
 # GitHub Actions
 
@@ -39,19 +41,20 @@ GitHub ActionsはGitHubが内包する機能の1つです。
 
 もとのソースを管理しつつ、GitHub PagesにビルドしたHTMLを公開するには、以下の工程が必要です。
 
-1. 必要なソースを一通りコミットする
-1. ソースからHTMLをビルドする
-1. ビルドしたHTMLを特定ブランチにコミットする
-1. 上記のコミットをGitHubにプッシュする
+1. 必要なソースを一通りチェックアウトする
+2. ソースからHTMLをビルドする
+3. ビルドしたコンテンツをデプロイする
 
-このうち、2-4の工程をGitHub Actionsで自動化していきます。
+この全工程をGitHub Actionsで自動化していきます。
 （なお、1番めの「コミットをGitHubにプッシュした時」をトリガーとします）
 
-# 事前準備をする
+# GitHub Actionsを経由してサイトをデプロイする
+
+## 事前準備をする
 
 今回紹介するワークフローを使うために、次の作業をあらかじめ実施してください。
 
-## requirements.txtに依存ライブラリを記載する
+### requirements.txtに依存ライブラリを記載する
 
 実際にワークフロー上で動作する環境は、これまでローカルでビルドしたSphinx用の環境と揃っていることが望ましいです。
 そのため、あらかじめビルドに必要となる依存ライブラリの取りまとめを行い、これをGitで管理しましょう。
@@ -62,35 +65,27 @@ pip freeze > requirements.txt
 
 この作業はSphinx拡張を増やすたびに必要です。忘れないように気をつけましょう。
 
-## GitHubのパーソナルトークンを生成する
+### `sphinx.ext.githubpages`を有効にする
 
-今回のワークフローでは、ワークフロー内の処理としてGitHubにプッシュする行為が含まれています。
-GitHubへのプッシュには認証が必要になりますが、リポジトリのプッシュ権を持つことが必須となります。
+標準設定のSphinxは、ビルド時にHTML以外の静的ファイルを`_static`フォルダに配置しします。
+しかし、GitHub Pagesの標準動作では、`_static`フォルダへのアクセスを許可していません。
 
-今回は、自身のGitHubアカウントのパーソナルアクセストークンを権限指定で作成して、ワークフロー内の認証に使います。
+この挙動の対策として、Sphinxの標準添付されている拡張である`sphinx.ext.githubpages`を利用することで、
+`_static`フォルダへのアクセスを可能にします。
 
-1. [GitHubのPersonal access tokensページ](https://github.com/settings/tokens)にアクセスする
-1. `Generate new token`のボタンをクリックして、トークンの新規作成を進める
-1. 設定を記述してトークンを作成する
-    1. `Note`には適当な名称でよい
-    1. `Select scopes`は、少なくとも`repo`にチェックを入れれば大丈夫
-    1. ページ最下層の`Generate token`でトークンを生成する
-1. 生成されたトークンはメモっておく
+```python:source/conf.py
+extensions = [
+    'oembed.ext.sphinx',
+    'sphinx.ext.githubpages,  # 追加！
+    'sphinx_revealjs',
+    'sphinxemoji.sphinxemoji',
+]
+```
 
-## リポジトリの設定にトークンを保存する
+## GitHub Actionsの設定をする
 
-ワークフローでトークンを使うためには、リポジトリ設定にトークンを保存する必要があります。
-
-1. リポジトリのトップから`Settings`タブ経由で設定画面にアクセスする
-1. 左メニューにある`Secret`でGitHub Actions用の変数管理画面にアクセスする
-1. `New repository secret`ボタンで変数を登録する
-    - `Name`には、`GH_PAT`を入力
-    - `Value`には、先程生成したトークンを入力
-1. `Add secret`で保存
-
-# ワークフローを登録する
-
-ここまで実施したら、ワークフローファイルをコミット・プッシュをするだけです。
+事前準備を実施したら、ワークフローファイルをコミット+プッシュをするだけです。
+ここからは、サンプルとなるファイルを提示しつつ、内容について簡単に解説していきます。
 
 GitHub Actionsで使うワークフローの定義は、`.github/workflows`配下にYAMLファイルで作成する必要があります。
 作成されたファイルがコミットされ、GitHubにプッシュしたタイミングで、GitHub Actionsのプロセスが動きます。
@@ -104,33 +99,30 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v1
-        with:
-          python-version: 3.9
-      - name: Build pages
-        run: |
-          pip install -r requirements.txt
-          make revealjs
-          touch build/revealjs/.nojekyll
-      - name: Deploy to GitHub Pages
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          BUILD_DIR: build/revealjs
-          GH_PAT: ${{ secrets.GH_PAT }}
+     - uses: actions/checkout@v4
+     - uses: actions/setup-python@v5
+     - name: Build
+       run: |
+         pip install -r requirements.txt
+         make revealjs
+     - name: Upload artifact
+       uses: actions/upload-pages-artifact@v3
+       with:
+         path: source/build/revealjs
+     - name: Deploy to GitHub Pages
+       id: deployment
+       uses: actions/deploy-pages@v4
 ```
 
-## ワークフローの解説
-
-ここからはワークフローファイルの各セクションの解説をしていきます。
-
-なお、`name`はGitHub ActionsのWeb画面上で使われるだけなので、解説は省略します。
-
-### on
+### `on`要素
 
 Actionsのトリガーとなるイベントを定義します。
 
@@ -142,7 +134,14 @@ Actionsのトリガーとなるイベントを定義します。
 もう1つの`workflow_dispatch`はGitHubリポジトリなどでのイベントではなくGitHub Actions上で手動実行できるようにするための定義です。
 こちらも更に子要素に定義を書くことで、実行時のオプションなどを用意することが出来ます。
 
-### jobs
+### `permissions`要素
+
+GitHub Actionsの各動作は、実際のGitHubアカウントではなく「Actions用のユーザー」とでも呼ぶべき権限にて実行しています。
+これはアカウントと違いリポジトリに関する権限が制限されています。
+
+`permissions`を宣言することで、ワークフローの動作に必要な権限を付与していきます。
+
+### `jobs`要素
 
 Actionsのトリガーに応じて実際に実行するタスク処理を定義します。
 
@@ -151,29 +150,12 @@ Actionsのトリガーに応じて実際に実行するタスク処理を定義�
 今回は次のようなステップでテスクが定義されています。
 
 1. Gitリポジトリのチェックアウトを行い、ソースを取ってくる
-1. Python実行環境をセットアップする
-1. 実際に書いたコマンドを順に実行して、HTMLビルドを行う
-1. GitHub Pages用ブランチにコンテンツをまるごとコミット・プッシュする
-
-### jobs:ビルド処理をちょっと細かく
-
-`name: Build pages`とあるステップの中身を見てみましょう。
-
-```bash
-pip install -r requirements.txt
-make revealjs
-touch build/revealjs/.nojekyll
-```
-
-最初の2コマンドはビルドのためのものですが、最後に見慣れないコマンドがあります。
-これは、GitHub PagesとSphinxの仕様によって必要となるファイルを生成しています。
-
-Sphinxの標準構成では、静的ファイルはまとめて`/_static`というパスにコピーします。
-一方でGitHub PagesはJekyllというソフトで動作しているのですが、Jekyllのデフォルト動作として「アンダースコアで始まるパスは参照できない」という挙動となっています。
-そのため、この問題を回避するために`.nojekyll`というファイルを用意することで、`/_static`配下のファイルもリクエスト可能にする必要があります。
+2. Python実行環境をセットアップして、プレゼンテーション用のビルドを行う
+3. GitHub Pagesへのデプロイ対象のパッケージングをする
+4. 3でパッケージしたファイルを用いて、GitHub Pages上にコンテンツをデプロイする
 
 # ワークフローを観察する
 
 これで、プッシュするたびに自動でGitHub Pagesが更新されるようになりました。
 
-ソースのテキストなどを変更して、様子を見てみましょう。
+何度かソースの更新、コミット、プッシュを実行してみて、ワークフローの様子を確認してみましょう。

@@ -6,7 +6,7 @@ title: "まずはシンプルなプレゼンテーションを作成する"
 
 # 仮想環境の準備をする
 
-このガイドブック向けにしか使わないライブラリもあるだろうため、まずはPythonの仮想環境を`venv`を使って作成しましょう。
+このガイドブック向けにしか使わないライブラリもあるので、まずはPythonの仮想環境を`venv`を使って作成していきます。
 
 ```shell-session
 $ cd /path/to/workspace
@@ -22,19 +22,19 @@ $ source .venv/bin/activate
 今回は登場人物を減らすためにも、Sphinxが用意しているコマンドでドキュメントを新規作成します。
 
 ```shell-session
-$ pip install "Sphinx==3.4.3" "sphinx-revealjs==1.0.1"
+$ pip install "Sphinx==8.0.2" "sphinx-revealjs=3.0.3"
 (中略)
-Successfully installed Jinja2-2.11.3 MarkupSafe-1.1.1 Pygments-2.7.4 Sphinx-3.4.3 alabaster-0.7.12 babel-2.9.0 certifi-2020.12.5 chardet-4.0.0 docutils-0.16 idna-2.10 imagesize-1.2.0 packaging-20.9 pyparsing-2.4.7 pytz-2021.1 requests-2.25.1 snowballstemmer-2.1.0 sphinx-revealjs-1.0.1 sphinxcontrib-applehelp-1.0.2 sphinxcontrib-devhelp-1.0.2 sphinxcontrib-htmlhelp-1.0.3 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-1.0.3 sphinxcontrib-serializinghtml-1.1.4 urllib3-1.26.3
+Successfully installed Jinja2-3.1.4 MarkupSafe-2.1.5 Pygments-2.18.0 Sphinx-8.0.2 alabaster-1.0.0 babel-2.16.0 certifi-2024.8.30 charset-normalizer-3.3.2 docutils-0.21.2 idna-3.8 imagesize-1.4.1 packaging-24.1 requests-2.32.3 snowballstemmer-2.2.0 sphinx-revealjs-3.0.3 sphinxcontrib-applehelp-2.0.0 sphinxcontrib-devhelp-2.0.0 sphinxcontrib-htmlhelp-2.1.0 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-2.0.0 sphinxcontrib-serializinghtml-2.0.0 urllib3-2.2.2
 ```
 
-Sphinxには、ドキュメントとして必要な各種ファイルを新規作成してくれる`sphinx-quickstart`が用意されています。
+Sphinxには、ドキュメントとして必要な各種ファイルを新規作成してくれるコマンドとして`sphinx-quickstart`が用意されています。
 これを使って、ドキュメンテーションとして最低限の設定を用意してもらいましょう。
 
 基本的には `>` で始まる行でだけ入力を求められるので、必要に応じて自分用の値を入力していってください。
 
 ```shell-session:必要な箇所だけ抜粋
 $ sphinx-quickstart
-> Separate source and build directories (y/n) [n]:
+> Separate source and build directories (y/n) [n]: y
 ... ソースファイルと生成場所をフォルダレベルで分割するか。今回は [y]を選択
 
 The project name will occur in several places in the built documentation.
@@ -100,8 +100,8 @@ Python仮想環境を用意する
 
 # sphinx-revealjsを組み込み、ビルドする
 
-`sphinx-quickstart`で生成された直後は、当然ながら他の拡張を認識していない状態です。
-そのため、先程書いたソースをドキュメントHTMLとして出力可能ですが、プレゼンテーションには出来ません。
+`sphinx-quickstart`で生成された直後の環境は、当然ながら他の拡張を認識していない状態です。
+そのため、先程書いたソースをドキュメントHTMLとしての出力をすることは可能ですが、プレゼンテーションとして出力することは出来ません。
 ここからは、このドキュメントで`sphinx-revealjs`を使うための設定をしていきます。
 
 ## 設定をする
@@ -110,17 +110,15 @@ Python仮想環境を用意する
 
 ```python:source/conf.py
 # -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
    # 使用する拡張としてsphinx-revealjsを新規追加
    'sphinx_revealjs',
 ]
 ```
 
-最低限ではここを編集するだけで、プレゼンテーション用のビルドが実施できるようになります。
+ここを編集するだけで、プレゼンテーション用のビルドが実施できるようになります。
 
 ## ビルドをする
 
@@ -128,7 +126,7 @@ extensions = [
 
 ```shell-session
 $ make revealjs
-Running Sphinx v3.4.3
+Running Sphinx v8.0.2
 loading translations [ja]... done
 making output directory... done
 building [mo]: targets for 0 po files that are out of date
@@ -159,7 +157,7 @@ The HTML pages are in build/revealjs.
 
 `Reveal.js`では組み込みでのカラーテーマがいくつか提供されています。
 
-`sphinx-revealjs`では何も設定がない場合は、`black`が採用される動作になっています。
+`sphinx-revealjs`では何も設定がない場合は、`black`を使用する動作になっています。
 これは、設定を追記すればテーマが変わるようになっています。
 
 ## Reveal.jsの組み込みテーマ一覧
@@ -175,7 +173,7 @@ The HTML pages are in build/revealjs.
 revealjs_style_theme = 'sky'
 ```
 
-即時で反映されないので、設定変更を行ったら`make revealjs`で再生成しましょう。
+この設定をしても生成済みにプレゼンテーションには反映されません。 そのため、設定変更を行ったら`make revealjs`で再生成しましょう。
 
 ![presentation-top-2.png](https://storage.googleapis.com/zenn-user-upload/btsjeqmzeqlxaf6uaf96p3mozlia)
 
@@ -184,7 +182,7 @@ revealjs_style_theme = 'sky'
 `Reveal.js`のよくあるテーマでは、各セクションのヘッダー文の英字テキストが全て大文字になります。
 今回は、このタイミングでちょっとひと工夫して、この設定を解除しましょう。
 
-## CSSファイルを用意
+## CSSファイルを用意する
 
 まずは、テキストの大文字・小文字を変換する設定を無効化するスタイルを用意して、CSSファイルにしましょう。
 Sphinxでドキュメントをまたいで使う静的ファイルは`_static`フォルダで管理することが多いです。
@@ -198,8 +196,7 @@ Sphinxでドキュメントをまたいで使う静的ファイルは`_static`�
 参照元: https://github.com/hakimel/reveal.js/issues/2226
 
 Reveal.jsの組み込みテーマの多くでは、`text-transform: uppercase;`が標準で指定されています。
-そのため、それらのテーマで打ち消すためには上記のように`text-transform: none;`でもとに戻す必要があります。
-
+そのため、指定を解除したい場合は上記のように`text-transform: none;`でもとに戻す必要があります。
 
 ## ビルド時に組み込むようにする
 
@@ -207,12 +204,12 @@ Reveal.jsの組み込みテーマの多くでは、`text-transform: uppercase;`�
 
 ```python:source/conf.py
 revealjs_style_theme = 'sky'
-# 普通のHTMLと同じものを使えるので、簡単な設定として指定
-revealjs_static_path = html_static_path
+# Reveal.jsプレゼンテーションで使う静的ファイルを管理しているフォルダを指定
+revealjs_static_path = ['_static']
 # Reveal.jsプレゼンテーションで使うCSSファイルを指定
 # revealjs_static_pathで指定したフォルダからのパス
 revealjs_css_files = [
-    "slides.css",
+    'slides.css',
 ]
 ```
 

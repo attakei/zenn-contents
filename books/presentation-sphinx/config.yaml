@@ -11,6 +11,6 @@ chapters:
   - introduction
   - about-sphinx-revealjs
   - getting-started
-  - use-sphinx-extensions
+  - use-plugins-and-extensions
   - deployment-github-pages
   - conclusion

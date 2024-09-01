@@ -31,9 +31,9 @@ Sphinxでドキュメンテーションを書いている人。
 本を書くにあたって、ソース類の再現確認等に使っている言語とバージョンです。
 基本的には、ある程度前後しても動作はすると想定です。
 
-- Python 3.9.1
-- Sphinx 3.4.3
-- sphinx-revealjs 1.0.1
+- Python 3.12.5
+- Sphinx 8.0.2
+- sphinx-revealjs 3.0.3
 - GitHub
     - Repository
     - Actions
