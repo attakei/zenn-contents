@@ -67,7 +67,7 @@ pip freeze > requirements.txt
 
 ### `sphinx.ext.githubpages`を有効にする
 
-標準設定のSphinxは、ビルド時にHTML以外の静的ファイルを`_static`フォルダに配置しします。
+標準設定のSphinxは、ビルド時にHTML以外の静的ファイルを`_static`フォルダに配置します。
 しかし、GitHub Pagesの標準動作では、`_static`フォルダへのアクセスを許可していません。
 
 この挙動の対策として、Sphinxの標準添付されている拡張である`sphinx.ext.githubpages`を利用することで、
