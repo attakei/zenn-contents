@@ -1,10 +1,10 @@
 ---
-title: "atsphinx-audioplayer リリースノート"
+title: "atsphinx-audioplayerを使い、Sphinxドキュメント上でオーディオファイルの再生をサポートしましょう"
 emoji: "🖨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx"]
-published: false
-# published_at: '2024-09-17 10:00'
+published: true
+# published_at: '2024-09-17 12:30'
 ---
 
 :::message
