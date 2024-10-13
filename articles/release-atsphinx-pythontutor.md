@@ -39,8 +39,7 @@ Python Tutorは、Pythonの教育用ツールで、コード実行時におけ�
 
 ### 共有する
 
-実行状態を共有したい場合は、「Visualize Execution」を押した後の画面にある、
-「Generate permanent link」や「Generate embed code」ボタンをクリックすることで、
+実行状態を共有したい場合は、「Generate permanent link」「Generate embed code」ボタンをクリックしてください。
 それぞれのボタン右にコピー用のコードが出力されます。
 
 例えば、「Generate permanent link」ボタンで出力されるのは[このリンク](https://pythontutor.com/render.html#code=members%20%3D%20%5B%22Mizuki%22,%20%22Kageyama%22,%20%22Matsumoto%22,%20%22Sakamoto%22,%20%22Endo%22%5D%0A%0Aprint%28f%22%E5%88%9D%E6%9C%9F%3A%20%7Blen%28members%29%7D%20%E4%BA%BA%22%29%0A%0Amembers.append%28%22Kitadani%22%29%0Amembers.remove%28%22Mizuki%22%29%0Amembers%20%2B%3D%20%5B%22Okui%22,%20%22Fukuyama%22%5D%0Amembers.remove%28%22Sakamoto%22%29%0Amembers.append%28%22Ricardo%22%29%0A%0Aprint%28f%22%E7%8F%BE%E5%9C%A8%3A%20%7Blen%28members%29%7D%20%E4%BA%BA%22%29%0A%0Afor%20m%20in%20members%3A%0A%20%20%20%20print%28m%29&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=311&rawInputLstJSON=%5B%5D&textReferences=false)のURLです。
@@ -107,7 +106,7 @@ https://pypi.org/project/atsphinx-pythontutor/
 きっかけ自体はPyCon JP 2024のDeveloper Sprintに参加したことです。
 
 これは例年PyCon JPのカンファレンスデーの翌日に行われる、集まったPythonisitaたちなどと一緒に開発や課題解決に取り組むイベントです。
-特段チームで動くということをしていなかったのですが、たまたまPython Boot Campのリポジトリを見て、Python Tutorの存在を初めて知り、
-「もし自分のサイトで使うにしてもURLのまま管理するのはなんとなくやだ」というだけの理由でとりあえず作ったものです。
+特段チームで動くということをしていなかったのですが、たまたまPython Boot Campのリポジトリを見て、Python Tutorの存在を初めて知りました。
+リンクやiframeがそのまま埋め込まれていたのですが、「もし自分のサイトで使うにしてもURLのまま管理するのはなんとなくやだ」というだけの理由でとりあえず作ったものです。
 
 とりあえず、開発欲が解消されたので良い機会でした。
