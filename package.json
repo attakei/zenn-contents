@@ -8,10 +8,10 @@
     "zenn": "zenn"
   },
   "dependencies": {
-    "textlint": "^14.0.4",
+    "textlint": "^14.2.1",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-ja-technical-writing": "^10.0.1",
-    "zenn-cli": "^0.1.153"
+    "zenn-cli": "^0.1.157"
   },
   "volta": {
     "node": "20.12.2"
