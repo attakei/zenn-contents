@@ -6,7 +6,8 @@ topics:
   - "Sphinx"
   - "ReadTheDocs"
   - "revealjs"
-published: false
+published: true
+published_at: "2024-10-19 11:00"
 ---
 
 # 要約
