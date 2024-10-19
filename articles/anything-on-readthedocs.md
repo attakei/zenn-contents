@@ -1,5 +1,5 @@
 ---
-title: "Read the Docs上でLTSなプレゼンテーション展開をしよう"
+title: "Read the Docs上でバージョニングされたプレゼンテーション展開をしよう"
 emoji: "📖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
