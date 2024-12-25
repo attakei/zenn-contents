@@ -1,9 +1,9 @@
 ---
 title: "deck2pdfの刷新をしたら自作スライドのエクスポート体験がすごく向上した"
-emoji: "🐷"
+emoji: "🖨️"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
-published: false
+topics: ["qiitaadventcalende", "adventcalendar2024", "playwright", "pdf", "contest2024"]
+published: true
 ---
 
 数年前に deck2pdf というPythonプロジェクトを公開していました。
