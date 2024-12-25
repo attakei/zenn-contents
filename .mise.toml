@@ -1,2 +1,4 @@
 [tools]
+lefthook = "latest"
 node = "20.18.0"
+pnpm = "9"
