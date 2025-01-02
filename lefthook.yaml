@@ -1,0 +1,9 @@
+# Important!
+#   This hooks require uv to
+
+pre-commit:
+  parallel: true
+  commands:
+    textlint:
+      glob: '*.md'
+      run: 'pnpm textlint {staged_files}'
