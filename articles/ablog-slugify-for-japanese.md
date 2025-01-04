@@ -3,7 +3,8 @@ title: "ABlogでのSphinxブログ構築時の日本語タクソノミー対策"
 emoji: "🌐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["sphinx", "unicode", "python"]
-published: false
+published: true
+published_at: '2025-01-04 20:10'
 ---
 
 自分の個人サイトのリフレッシュを進めている最中なのですが、この際にABlog周りで起きたトラブルと対処のメモです。
