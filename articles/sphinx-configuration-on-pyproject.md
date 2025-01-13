@@ -3,7 +3,8 @@ title: "Sphinxのconf.pyを3行にする"
 emoji: "🗜️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "python"]
-published: false
+published: true
+published_at: '2025-01-14 00:00'
 ---
 
 :::message

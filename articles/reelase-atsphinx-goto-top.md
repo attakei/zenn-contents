@@ -3,7 +3,8 @@ title: "Sphinxに「トップに戻る」ナビゲーションをつける"
 emoji: "🧭"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "python"]
-published: false
+published: true
+published_at: '2025-01-13 21:00'
 ---
 
 :::message
