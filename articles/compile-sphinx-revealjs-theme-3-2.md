@@ -3,7 +3,8 @@ title: "sphinx-revealjs 3.2 以降のスライドテーマビルドの注意点"
 emoji: "🖨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["sphinx", "revealjs", "sass"]
-published: false
+published: true
+published_at: '2025-04-16 20:30'
 ---
 
 少し前に、sphinx-revealjsのv3.2.0をリリースしました。
