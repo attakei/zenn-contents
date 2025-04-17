@@ -96,7 +96,7 @@ PipedreamのCLIをインストールしたうえで、次のような作業を�
 git clone https://github.com/attakei-lab/pipedream-components
 cd pipedream-components
 pnpm install
-pnpm build
+pnpm -r build
 pd publish packages/components/dist/twitter/send-tweet.mjs
 
 ```
@@ -105,7 +105,7 @@ Pipedreamのアクション選択時に「My Actions」のフィルターを選�
 
 ![](/images/pipedream-actions-x-tweet/select-actions.png)
 
-## アクションの動作設定
+### アクションの動作設定
 
 アクションの動作設定では、現状だと次の2個を要求します。
 
