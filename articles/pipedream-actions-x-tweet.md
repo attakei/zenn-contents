@@ -3,7 +3,8 @@ title: "Pipedreamで再びXにポスト出来るようにする"
 emoji: "🤖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["pipedream", "typescript", "twitterapi"]
-published: false
+published: true
+published_at: "2025-04-18 10:30"
 ---
 
 Zennでの記事更新や自分のサイト更新などで、通知目的でSNSに発信するというのはよくやる手法です。

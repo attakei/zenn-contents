@@ -3,7 +3,8 @@ title: "PipedreamにおけるBlueskyへのリンクカード付き投稿"
 emoji: "🤖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["pipedream", "typescript", "bluesky"]
-published: false
+published: true
+published_at: "2025-04-18 10:30"
 ---
 
 :::message
