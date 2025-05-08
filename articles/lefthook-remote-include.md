@@ -7,7 +7,8 @@ topics:
   - github
   - lefthook
   - renovate
-published: false
+published: true
+published_at: "2025-05-09 09:00"
 ---
 
 この記事自体は、主にlefthookのリモート設定に関する紹介がメインです。
