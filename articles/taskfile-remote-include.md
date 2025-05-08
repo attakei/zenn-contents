@@ -6,7 +6,8 @@ topics:
   - Sphinx
   - gotask
   - taskfile
-published: false
+published: true
+published_at: "2025-05-09 10:00"
 ---
 
 タスクランナーにもっぱらTask (以下、go-task) [^1] を使用しています。
