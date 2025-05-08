@@ -11,10 +11,6 @@ published: false
 ---
 
 この記事自体は、主にlefthookのリモート設定に関する紹介がメインです。
-lefthookの自体の詳細を知りたい場合は、Zennで公開されている他の方の記事を参照してください。
-
-- [Git フック管理ツール「Lefthook」の紹介](https://zenn.dev/sukesan0720/articles/87a8c005f82522)
-- [Lefthookを使ってみたい！](https://zenn.dev/gemcook/articles/466afbc82cbff3)
 
 ## 似たパッケージを横断的に同じ検査をしたい
 
@@ -30,6 +26,11 @@ lefthookはGo言語で書かれたGit hooks管理ツールです。
 「コマンドの並列起動による高速な動作」「YAMLによる細かい動作設定」「Go言語系CLIおなじみのツールの依存度合いの少なさ」が特徴です。
 
 自分は以前[pre-commit](https://pre-commit.com/)を使っていたのですが、諸々あってこっちを使っています。
+
+lefthookの自体の詳細を知りたい場合は、Zennで公開されている他の方の記事を参照してください。
+
+- [Git フック管理ツール「Lefthook」の紹介](https://zenn.dev/sukesan0720/articles/87a8c005f82522)
+- [Lefthookを使ってみたい！](https://zenn.dev/gemcook/articles/466afbc82cbff3)
 :::
 
 さて、同じような構造をしているものを管理しているからこそ発生しがちな課題として、
@@ -147,7 +148,7 @@ summary: (done in 0.16 seconds)
 ✔ doc8
 ```
 
-メインのlefthook.yamlに記述されている`nph`と一緒に`remotes`経由で参照している`doc8`も実行していることがわかります。
+メインの`lefthook.yaml`に記述されている`nph`と一緒に`remotes`経由で参照している`doc8`も実行していることがわかります。
 これで、当初の目的である「lefthookのリモート設定を使う」が達成できました。
 
 ## `remotes`における工夫点と注意点
@@ -170,25 +171,32 @@ pre-commit:
 この文法はいわゆるテンプレート変数なのですが、[v1.10.8](https://github.com/evilmartians/lefthook/releases/tag/v1.10.8)から使用可能になった[`templates`](https://lefthook.dev/configuration/templates.html)項目を使うことで、独自に変数を作成出来るようになっています。
 
 参照元の掲載時には省略していましたが、[実際のファイル](https://github.com/attakei/age/blob/main/lefthook.yaml)を見ると、`run_python`に`'uv run'`を設定しています。
-この記述を用意しておくことで、「pre-commit時にdoc8を使うこと」「その際にパッケージ管理ツールは自由に選択できること」の両立が可能です。
-（例えば、この値を指定しないことで「`venv activate`済みが前提」あるいは「グローバルインストールしたdoc8を使う」という振る舞いもできます）
+この記述を用意しておくことで、「pre-commit時に`doc8`を使うこと」「その際にパッケージ管理ツールは自由に選択できること」の両立が可能です。
+（例えば、この値を指定しないことで「`venv activate`済みが前提」あるいは「グローバルインストールした`doc8`を使う」という振る舞いもできます）
 
 ### `remotes`や他項目の優先順位関係
 
 lefthookの設定項目には`remotes`の他にローカルの相対パスを指定する`extends`があります。
-当然ながらlefthook.yaml自体にhooksの設定を記述するのが標準です。
+当然ながら`lefthook.yaml`自体にhooksの設定を記述するのが標準です。
 
 さて、同じ項目がバッティングした場合、どのような処理になるでしょうか。
 
 自分の感覚としては不思議ではあるのですが、直接記述より`remotes`が優先されます。
 更に`remotes`より`extends`が優先される仕様となっています。
-これは、lefthook.yamlに直書きしても、`remotes`や`extends`にあると無駄になってしまうので注意が必要です。
+これは、`lefthook.yaml`に直書きしても、`remotes`や`extends`にあると無駄になってしまうので注意が必要です。
 
 では、どうしても上書きしたい場合はどうすればよいでしょうか。
 
 lefthookが参照している設定ファイルにはもう1つ、`lefthook-local.yml`があります。
 これは、最終的に解決した設定を更に上書きするときに使われるものです。
 作者的には`.gitignore`で除外してやむを得ないケースでのみ使う想定のようです。
+
+まとめると、このような順に上書きしていきます。
+
+1. `lefthook.yaml`に直接記述したhooks設定
+1. `lefthook.yaml`の`remotes`で取得したhooks設定
+1. `lefthook.yaml`の`extends`で取得したhooks設定
+1. `lefthook-local.yml`に記述したhooks設定
 
 ### 依存ライブラリの管理は自己責任
 
@@ -202,9 +210,17 @@ lefthookが参照している設定ファイルにはもう1つ、`lefthook-loca
 ここまでで「共通化した設定」を作り管理するスタートを切ることができました。
 最後に、「どう追従するか」について忘れずに目を向けてみましょう。
 
-一番手っ取り早い方法は、「`ref: 'main'`, `refetch: true`にする」ことです（このmainはデフォルトランチであれば何でも平気です）。
-この設定にすることで、lefthookが起動するたびにmainへpush済みの最新設定を使うことができます。
-とはいえ、頻繁にコミットするような（適切な）戦術を取っていると頻繁なgit-fetchはかえって速度の低下を招きます。
+一番手っ取り早い方法は、「`ref: 'main'`, `refetch: true`にする」ことです（この"main"はデフォルトランチであれば何でも平気です）。
+
+```yaml:lefthook.yaml
+remotes:
+  - git_url: 'https://github.com/attakei/workspace-configs'
+    ref: 'main'
+    refetch: true
+```
+
+この設定にすることで、lefthookが起動するたびに"main"へpush済みの最新設定を使うことができます。
+とはいえ、頻繁にコミットするような（適切な）戦術を取っていると頻繁な`git-fetch`はかえって速度の低下を招きます。
 
 現在自分が取っている戦略は「共通化した設定を管理するリポジトリで適宜タグを設定しつつ、Renovateを使って追従する」というものです。
 この戦略の地味なメリットとして「Renovateが更新をいい感じに追ってくれるためPRが溢れたりはしない」というポイントがあったりします。
