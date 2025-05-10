@@ -104,11 +104,11 @@ TOMLには関数という概念も無いため、どうしても必要な場合�
 
 ### `conf.py`の場所を特定する
 
-Sphinxはビルドのための`sphinx-build`の実行時にソースフォルダを引数として指定します。[^5] このソースフォルダにある`conf.py`を設定ファイルとして認識します。
+Sphinxはビルドのための`sphinx-build`の実行時にソースフォルダを引数として指定します。 [^5] このソースフォルダにある`conf.py`を設定ファイルとして認識します。
 ここからどうやって`conf.py`を読み取るかというと、execを使っています。 [^6] <!-- textlint-disable-lie -->
 
-[^5] https://www.sphinx-doc.org/en/master/man/sphinx-build.html
-[^6] https://github.com/sphinx-doc/sphinx/blob/master/sphinx/config.py#L580
+[^5]: https://www.sphinx-doc.org/en/master/man/sphinx-build.html
+[^6]: https://github.com/sphinx-doc/sphinx/blob/master/sphinx/config.py#L580
 
 モジュールとしてインポートをしているわけではないため、`sys.modules`などから探索するのも困難です。
 そこで今回は、`inspect` [^7] を利用しています。
