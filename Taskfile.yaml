@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  zenn:
+    description: 'Handle Zenn CLI.'
+    cmds:
+      - >
+        deno run
+        --allow-env
+        --allow-net
+        --allow-read
+        --allow-sys
+        --allow-write
+        npm:zenn-cli {{.CLI_ARGS}}
+  textlint:
+    description: 'Check rules for articles and books by textlint.'
+    cmds:
+      - >
+        deno run
+        --allow-read
+        --allow-env
+        --allow-sys
+        --allow-write
+        scripts/textlint.ts {{.CLI_ARGS}}

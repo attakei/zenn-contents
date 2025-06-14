@@ -7,12 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: aquaproj/aqua-installer@9ebf656952a20c45a5d66606f083ff34f58b8ce0 # v4.0.0
       with:
-        node-version: '22'
-    - uses: pnpm/action-setup@v4
-      with:
-        version: 9
-        run_install: true
+        aqua_version: v2.51.2
     - name: Run textlint
-      run: pnpm run lint articles books
+      run: task textlint -- articles books

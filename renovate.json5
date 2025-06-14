@@ -5,6 +5,5 @@
   ],
   "enabledManagers": [
     "github-actions",
-    "npm",
   ],
 }
