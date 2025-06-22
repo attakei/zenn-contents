@@ -1,7 +1,7 @@
 [tool.uv]
 dev-dependencies = [
     "pip",
-    "sphinx==8.0.2",
+    "sphinx==8.2.3",
     "sphinx-revealjs==3.2.0",
 ]
 [tool.uv.workspace]
