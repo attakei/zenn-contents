@@ -3,7 +3,7 @@
  *
  */
 
-import { createLinter, loadTextlintrc, loadLinterFormatter } from "npm:textlint";
+import { createLinter, loadTextlintrc, loadLinterFormatter } from "textlint";
 // プラグインのロード（ダウンロードさせるのが主目的なので、importのみで良い）
 import "npm:textlint-rule-preset-ja-technical-writing";
 import "npm:textlint-filter-rule-comments";
