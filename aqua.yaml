@@ -13,4 +13,4 @@ registries:
 packages:
 - name: denoland/deno@v2.4.1
 - name: go-task/task@v3.44.0
-- name: evilmartians/lefthook@v1.11.13
+- name: evilmartians/lefthook@v1.12.2
