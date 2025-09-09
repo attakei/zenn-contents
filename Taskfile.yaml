@@ -7,6 +7,10 @@ tasks:
       - aqua i
       - bun install
       - lefthook install
+  setup-ci:
+    desc: 'Setup for CI env.'
+    cmds:
+      - bun install
   zenn:
     description: 'Handle Zenn CLI.'
     cmds:
