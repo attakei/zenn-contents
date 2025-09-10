@@ -3,7 +3,8 @@ title: "SphinxドキュメントにQRコードを埋め込みたくなったの�
 emoji: "📖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "python", "zennfes2025free"]
-published: false
+published: true
+published_at: '2025-09-10 18:00'
 ---
 
 皆さんは「発表駆動開発」してますか？
