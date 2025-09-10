@@ -3,14 +3,16 @@ title: "SphinxドキュメントにQRコードを埋め込みたくなったの�
 emoji: "📖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "python", "zennfes2025free"]
-published: false
+published: true
+published_at: '2025-09-10 18:00'
 ---
 
 皆さんは「発表駆動開発」してますか？
 
+自分はプロポーザルに密結合するテーマが未完成なのはいただけないと考える派閥です。
+ただし、派生物だったりエンハンスの類だったりは積極的にやっていきたいところですね。
 
-
-少し前に軽く作ってみたSphinx拡張の紹介です。（またです）
+というわけで、少し前に軽く作ってみたSphinx拡張の紹介です。（またです）
 この記事は、日本語で書いた初回リリースノートという扱いとなります。
 
 ## 何を作ったか
@@ -100,6 +102,14 @@ https://example.com
 さて、Sphinxには[sphinx-revealjs](https://pypi.org/project/sphinx-revealjs/)という「SphinxドキュメントからHTMLプレゼンテーションを生成する」という拡張が存在します。
 
 この2つの機能を組み合わせることで、「Sphinxドキュメントからプレゼンテーションを生成して、公開予定のURLにアクセスできるQRコードを掲載する」ことが可能になります。
+
+<!-- textlint-disable -->
+
+サンプルとして作った例：
+
+https://x.com/attakei/status/1965043891285172358
+
+<!-- textlint-enable -->
 
 ### Sphinx製ポスターからのWebサイトリンク
 
