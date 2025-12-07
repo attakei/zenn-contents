@@ -13,4 +13,4 @@ registries:
 packages:
 - name: go-task/task@v3.45.5
 - name: evilmartians/lefthook@v2.0.8
-- name: oven-sh/bun@bun-v1.3.3
+- name: oven-sh/bun@bun-v1.3.4
