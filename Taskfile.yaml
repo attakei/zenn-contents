@@ -12,10 +12,10 @@ tasks:
     cmds:
       - bun install
   zenn:
-    description: 'Handle Zenn CLI.'
+    desc: 'Handle Zenn CLI.'
     cmds:
       - bunx zenn-cli {{.CLI_ARGS}}
   textlint:
-    description: 'Check rules for articles and books by textlint.'
+    desc: 'Check rules for articles and books by textlint.'
     cmds:
       - bunx textlint {{.CLI_ARGS}}
