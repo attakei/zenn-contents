@@ -8,7 +8,7 @@ requires-python = ">=3.14"
 dev = [
     { name = "pip" },
     { name = "sphinx", specifier = "==9.0.4" },
-    { name = "sphinx-revealjs", specifier = "==3.2.0" },
+    { name = "sphinx-revealjs", specifier = "==3.2.1" },
 ]
 
 [[package]]
@@ -191,16 +191,16 @@ wheels = [
 
 [[package]]
 name = "sphinx-revealjs"
-version = "3.2.0"
+version = "3.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "docutils" },
     { name = "packaging" },
     { name = "sphinx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3c/8e/7d087365ff4f70fe665370c7542ef349c29d0988f2c2135983f13556f6c7/sphinx_revealjs-3.2.0.tar.gz", hash = "sha256:3d1098eaf923b4c0d1f049ee8039b1e7ec55aac669461514f9edf0c2c517cc27", size = 3993633, upload-time = "2025-04-03T12:45:31.867Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0d/45/bb041a1d8df09c05997aaede986140bc14c9abc1f9026015b1efeabda94a/sphinx_revealjs-3.2.1.tar.gz", hash = "sha256:f76094f0ae41fea083adebb2d7a981561b8ce30b9b80496945aa8619442bbd8d", size = 3993835, upload-time = "2025-12-25T19:29:13.228Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f1/6f/27d68997ed5de25445b151fd89cb968801ab355aaa8a3240793d44a77102/sphinx_revealjs-3.2.0-py3-none-any.whl", hash = "sha256:0c19290687a68c835a4653c3e679528b64393731759dc72e8e5361367c5e41e9", size = 2390494, upload-time = "2025-04-03T12:45:29.772Z" },
+    { url = "https://files.pythonhosted.org/packages/ac/bb/8df8c5f2f4dcd036afa43cb07e5584856e3d915591440f5e91abcdb04dec/sphinx_revealjs-3.2.1-py3-none-any.whl", hash = "sha256:805bed3ca459346e0f01967d5ed1c40d6b7b917de1541e1e4566c8341fe7017b", size = 2390529, upload-time = "2025-12-25T19:29:11.187Z" },
 ]
 
 [[package]]

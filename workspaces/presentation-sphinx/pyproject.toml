@@ -2,7 +2,7 @@
 dev-dependencies = [
     "pip",
     "sphinx==9.0.4",
-    "sphinx-revealjs==3.2.0",
+    "sphinx-revealjs==3.2.1",
 ]
 [tool.uv.workspace]
 members = []
