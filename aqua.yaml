@@ -12,5 +12,5 @@ registries:
   ref: v4.467.0 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: go-task/task@v3.48.0
-- name: evilmartians/lefthook@v2.1.0
+- name: evilmartians/lefthook@v2.1.1
 - name: oven-sh/bun@bun-v1.3.9
