@@ -3,7 +3,8 @@ title: "atsphinx-stliteを使い、ドキュメントを「さらに」インタ
 emoji: "📊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "Streamlit", "Stlite"]
-published: false
+published: true
+published_at: 2026-02-26 23:00
 ---
 
 :::message
@@ -25,6 +26,8 @@ published: false
 
 [atsphinx-stlite](https://pypi.org/project/atsphinx-stlite/)というSphinx拡張です。
 大雑把に書くと、ディレクティブを通してStreamlitのアプリケーションをドキュメントへ埋め込めるようにします。
+
+https://www.youtube.com/watch?v=SL59wvsyz3A
 
 Sphinxはドキュメントビルダーであるため、基本的にビルド時に生成されるものは静的サイトになります。
 そのため、インタラクティブな内容を提供するのに工夫が必要だったり、条件によってはほぼ不可能だったりします。
