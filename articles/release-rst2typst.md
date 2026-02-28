@@ -85,19 +85,130 @@ https://pypi.org/project/rst2typst/
 
 ### インストール
 
+PyPIにはアップロード済みのため、pipなどでインストールができます。
+
+```console:インストール例
+pip install rst2typst
+```
+
+PyPIにはTypstのPythonバインディングも存在するので、下記のように`pdf`付きでインストールすればPDF生成まで一括で行えます。
+
+```console:インストール例（PDFビルドもする時）
+pip install 'rst2typst[pdf]'
+```
+
 ### ドキュメントを書く
 
+普通にreSTでドキュメントを書いてみてください。
+自分が普段遣いしている文法向けの動作は実装したので、基本的には「よくあるreST」を書いている文には問題ないでしょう。
+
+注意点として「docutils本体で実装されているもの」のみを対象にしているため、**Sphinx固有のディレクティブは非対応**ということには気をつける必要があります。
+具体的には`toctree`あたりのディレクティブでしょうか。
+
+また、Sphinxはビルドの過程でdocutilsが中間生成したDocTreeを更に加工したうえで最終出力をします。
+そのため、ドキュメントの構成自体がSphinxの出力するものと若干違ってきます。
+
 ### 2パターンのビルド
+
+先程書いたreSTドキュメントをビルドしていきます。ライブラリは2個のCLIコマンドを提供しています。
+
+* `rst2typst` : docutilsを用いてTypstのソースコードを生成する。
+* `rst2typstpdf` : Typstのソースコードを中継してPDFを出力する。要`typst`オプション付きインストール。
+
+どちらも引数にドキュメントのファイルパスを指定することでビルド処理を実行します。
+また、通常では標準出力にビルド結果を出力しますが、引数に別のファイルパスを指定することでファイルとして保存できます。
+特に`rst2typstpdf`は出力内容がPDFバイナリーなので、ファイル保存する方が良いでしょう。
+
+```console:コマンド実行例
+$ rst2typst document.rst
+(Typstコードが出力される)
+
+$ rst2typstpdf document.rst document.pdf
+(document.prf に保存される)
+```
+
+## 未完成でもなんとかするためのワイルドカードたち
+
+この記事を書いた時点でのバージョンはv0.1.0なのですが、強い意思を持って「v0.1.0の時点で実装する」と決めた機能が2つあります。
+それが、ここのタイトルでもある「`raw`ディレクティブ」と「CLIの`--template`オプション」です。
+
+### `raw`ディレクティブ
+
+Sphinxでの `raw` のよくある使い方として「SNSの共有用HTMLを直接埋め込む」というものがあります。
+YouTubeに動画を埋め込む場合、このようなreSTコードを書いたりします。 [^5]
+
+[^5]: このケースだと、[oEmbedPy](https://pypi.org/project/oEmbedPy)を使うほうが楽ですが。
+
+```rst:HTMLビルド用にiframeを埋め込む記述
+
+.. raw:: html
+
+   <iframe
+       width="560"
+       height="315"
+       src="https://www.youtube.com/embed/SL59wvsyz3A?si=iP5Er3W55VukNywr"
+       title="YouTube video player"
+       frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+       referrerpolicy="strict-origin-when-cross-origin"
+       allowfullscreen
+   >
+   </iframe>
+```
+
+上記の例では`raw`の引数に`html`と指定することでHTMLを必要とするときだけ中身をそのまま使うようになっています。
+同様に、`typst`という引数を指定しいた場合はそのままTypstのコードとして埋め込む処理をします。
+
+```rst:明示的に改ページをするときに記述
+ここの文で改ページが発生して、
+
+.. raw:: typst
+
+   #pagebreak()
+
+ここは次のページになる。
+```
+
+これを使うことで、「rst2typstとして未実装な文法を代替する」「そもそもdocutils非対応の表現をする」ことを可能にします。
+
+### `--template`オプション
+
+HTML+CSSのように、Typstでも「定義やカスタマイズの宣言」と「コンテンツ」を切り離すような書き方が可能です。
+しかし、rst2typstの構造上の理由で、出力するTypstコードの最序盤に限っては`raw`ディレクティブを差し込むことが出来ません。 [^6]
+
+[^6]: 単純なreSTに対応した出力をしているわけではなく、モジュールのインポートなどを先頭に出力する処理となっているため。
+
+この要件への対応等を目的として、`--template`オプションを使用することが出来ます。
+未指定の場合は、下記のようなファイルを使用します。（いずれもrst2typstの内部で生成している項目）
+
+```txt:teamplate.txt
+{imports}
+{includes}
+{body}
+```
+
+<!-- textlint-disable -->
+
+例えば下記のような感じにすると、
+
+<!-- textlint-enable -->
+
+```txt:teamplate.txt
+# include
+{imports}
+{includes}
+{body}
+```
+
+```console:--templateオプションを使うコマンド実行例
+$ rst2typst --template=template.txt document.rst
+```
+
+このファイルを指定することで、カスタムテンプレートを使用することが出来ます。
+これ単体ではそこまで効果的ではないのですが、`raw`ディレクティブに関数やモデルを指定しつつその定義をコンテンツ外に置くことで、コードの可読性が上がります。
 
 ## おわりに
 
 というわけで、rst2typstの紹介をしてみました。
 冒頭にちょっと触れた技術書典で頒布する予定のものがあり、今回はこのrst2typstかatsphinx-typstで作業をする予定でいます。
 無事に1冊書けそうだったら、その顛末をまた技術同人誌にしてみようと考えています。
-
-## 以下、余談
-
-### `raw`ディレクティブと`--template`オプションというワイルドカード
-
-この記事を書いた時点でのバージョンはv0.1.0なのですが、強い意思を持って「v0.1.0の時点で実装する」と決めた機能が2つあります。
-それが、ここのタイトルでもある「`raw`ディレクティブ」と「CLIの`--template`オプション」です。
