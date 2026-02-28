@@ -1,10 +1,10 @@
 ---
-title: "reStructuredTextからTypst経由でPDFを出力したい（のでライブラリを作る）"
-emoji: "📊"
+title: "reStructuredTextからTypst経由でPDFを出力したい（のでライブラリを作った）"
+emoji: "📝"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["restructuredtext", "typst"]
-published: false
-# published_at: 2026-02-27 23:00
+topics: ["restructuredtext", "typst", "sphinx"]
+published: true
+published_at: 2026-03-01 09:00
 ---
 
 ## 技術同人誌を書く環境あれこれ
