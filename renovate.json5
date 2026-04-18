@@ -6,7 +6,7 @@
   ],
   "timezone": "Asia/Tokyo",
   "schedule": [
-    "* 9-21 * * 0,6",
+    "* 9,21 * * 6",
   ],
   "automerge": true,
 }
