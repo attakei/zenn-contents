@@ -14,8 +14,8 @@ tasks:
   zenn:
     desc: 'Handle Zenn CLI.'
     cmds:
-      - bunx zenn-cli {{.CLI_ARGS}}
+      - bunx --bun zenn {{.CLI_ARGS}}
   textlint:
     desc: 'Check rules for articles and books by textlint.'
     cmds:
-      - bunx textlint {{.CLI_ARGS}}
+      - bunx --bun textlint {{.CLI_ARGS}}
