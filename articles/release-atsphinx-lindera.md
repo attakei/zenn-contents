@@ -103,8 +103,6 @@ https://voluntas.ghost.io/offline-japanese-full-text-search-in-browser/
 この記事は「オフラインでも使える全文検索」をDuckDB+FTS拡張とLinderaの組み合わせをWasm上で実現しています。
 記事で使っているリポジトリではデモであるためソース内でDB作成をしていますが、Sphinxのビルド時にローカルでDB構築が出来そうです。
 
-<!-- textlint-disable: ja-technical-writing/no-weak-phrase -->
-
 これにDuckDBの `ATTACH` 文を使って「sphinx-build時にビルドしたDuckDB用DBファイル」をまとめて検索するサイトを用意できるかもしれません。
 いわゆる「atsphinx系拡張の横断検索」といったものですね。
 
