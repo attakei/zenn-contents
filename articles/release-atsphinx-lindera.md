@@ -3,7 +3,8 @@ title: "Sphinxの日本語検索性能をLinderaで(また)向上させる"
 emoji: "🔍"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Sphinx", "python", "形態素解析", "lindera"]
-published: false
+published: true
+published_at: "2026-04-20 08:00"
 ---
 
 以前にこんな記事を書いて公開しました。
